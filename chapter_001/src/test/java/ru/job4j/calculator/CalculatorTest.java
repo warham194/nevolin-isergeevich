@@ -14,4 +14,25 @@ public class CalculatorTest {
         double expected = 2D;
         assertThat(result, is(expected));
     }
+	 public void whenTwoSubOneThenOne() {
+        Calculator calc = new Calculator();
+        calc.sub(2D, 1D);
+        double result = calc.getResult();
+        double expected = 1D;
+        assertThat(result, is(expected));
+    }
+	 public void whenThreeMulTwoThenSex() {
+        Calculator calc = new Calculator();
+        calc.mul(3D, 2D);
+        double result = calc.getResult();
+        double expected = 6D;
+        assertThat(result, is(expected));
+    }
+	 public void whenFourDivTwoThenTwo() {
+        Calculator calc = new Calculator();
+        calc.div(4D, 2D);
+        double result = calc.getResult();
+        double expected = 2D;
+        assertThat(result, is(expected));
+    }
 }
