@@ -2,6 +2,7 @@ package ru.job4j.condition;
 
 
 
+
 public class Triangle {
     private Point a;
     private Point b;
@@ -15,7 +16,7 @@ public class Triangle {
 
 
     public double distance(Point left, Point right) {
-        return Math.sqrt(Math.pow((left.getX() - right.getX()) + Math.pow(left.getY() - right.getY()));
+        return Math.sqrt(Math.pow(right.getX() - left.getX(), 2) + Math.pow(right.getY() - left.getY(), 2));
     }
 
     public double period(double ab, double ac, double bc) {
@@ -37,6 +38,8 @@ public class Triangle {
 
 
     private boolean exist(double ab, double ac, double bc) {
-        return false;
+
+       return ((ab + ac + bc) != 0 && ab + ac > bc  && ab + bc > ac && ac + bc > ab);
+
     }
 }
