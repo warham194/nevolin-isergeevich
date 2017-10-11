@@ -7,9 +7,9 @@ import static org.junit.Assert.assertThat;
 
 public class FactorialTest {
     @Test
-    public void FactorialTest() {
+    public void FactoriallTest() {
         Factorial factor = new Factorial();
         int res = factor.calc(5);
-        assertThat(factor, is(120));
+        assertThat(res, is(120));
     }
 }

@@ -10,6 +10,7 @@ public class CounterTest {
     public void SummaChetn() {
         Counter counter = new Counter();
         int res = counter.add(0, 10);
-        assertThat(counter, is(30));
+        assertThat(res, is(30));
     }
 }
+
