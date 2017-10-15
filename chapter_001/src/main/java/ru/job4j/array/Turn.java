@@ -1,12 +1,20 @@
 package ru.job4j.array;
-
+/**
+ * Class Turn.
+ * @author Ilya.
+ * @since  2017.10.
+ */
 public class Turn{
-
+    /**
+     * Method add.
+     * @param array args.
+     */
     public int[] back(int[] array){
-       for (int i = 0 ; i < array.length;i++){
-            array[i] = (array.length - i + 1);
-
-       }
+        for (int i = 0; i < array.length / 2; i++) {
+            int temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+        }
         return array;
     }
 
