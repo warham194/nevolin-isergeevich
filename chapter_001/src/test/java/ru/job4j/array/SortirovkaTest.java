@@ -14,9 +14,9 @@ public class SortirovkaTest {
         public void whenSortArrayWithTenElementsThenSortedArray() {
 
             Sortirovka prov = new Sortirovka();
-            int[] array1 = {1, 5, 4, 2};
-            int[] array2 = {12, 848 , 7 , 8 ,5 };
-            int[] rezultTest = {1, 2, 4, 5, 5, 7, 8, 12, 848};
+            int[] array1 = {1, 4, 5, 848};
+            int[] array2 = {5, 7 , 8 ,12 ,900 };
+            int[] rezultTest = {1, 4, 5, 5, 7, 8, 12, 848, 900};
             int[] result = prov.insertSort(array1, array2);
             assertThat(result, is(rezultTest));
         }

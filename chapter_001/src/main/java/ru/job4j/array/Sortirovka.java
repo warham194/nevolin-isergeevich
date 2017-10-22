@@ -6,40 +6,45 @@ package ru.job4j.array;
 public class Sortirovka {
     /**
      * Method insertSort.
-     * @param a args.
-     * @param b args.
-     * @return result.
+     * @param a1 args.
+     * @param a2 args.
+     * @return a3.
      */
-    public int[] insertSort (int[] a, int[] b) {
-        if (a == null) {
-            return b;
+    public int[] insertSort (int[] a1, int[] a2) {
+        if (a1 == null) {
+            return a2;
         }
-        if (b == null) {
-            return a;
+        if (a2 == null) {
+            return a1;
         }
-        int length = a.length + b.length;
-        int[] result = new int[length];
-        System.arraycopy(a, 0, result, 0, a.length);
-        System.arraycopy(b, 0, result, a.length, b.length);
+        int[] a3 = new int[a1.length + a2.length];
 
+        int i=0, j=0;
+        for (int k=0; k<a3.length; k++) {
 
-
-        // проведем сортировку вставками
-        int temp, j;
-        for(int i = 0; i < result.length - 1; i++){
-            if (result[i] > result[i + 1]) {
-                temp = result[i + 1];
-                result[i + 1] = result[i];
-                j = i;
-                while (j > 0 && temp < result[j - 1]) {
-                    result[j] = result[j - 1];
-                    j--;
-                }
-                result [j] = temp;
+            if (i > a1.length-1) {
+                int a = a2[j];
+                a3[k] = a;
+                j++;
+            }
+            else if (j > a2.length-1) {
+                int a = a1[i];
+                a3[k] = a;
+                i++;
+            }
+            else if (a1[i] < a2[j]) {
+                int a = a1[i];
+                a3[k] = a;
+                i++;
+            }
+            else {
+                int b = a2[j];
+                a3[k] = b;
+                j++;
             }
         }
 
-        return result;
+        return a3;
     }
 
 }
