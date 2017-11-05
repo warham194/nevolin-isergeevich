@@ -33,6 +33,7 @@ public class TrackerTest {
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
 
+    
     @Test
     public void whenDeleteChangedForNull() {
         Tracker tracker = new Tracker();
