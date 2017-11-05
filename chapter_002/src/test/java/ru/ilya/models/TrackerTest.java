@@ -1,14 +1,11 @@
 package ru.ilya.models;
-
 /**
  * Created by Lenovo2 on 02.11.2017.
  */
-
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 public class TrackerTest {
-
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
@@ -16,7 +13,6 @@ public class TrackerTest {
         tracker.add(item);
         assertThat(tracker.getAll()[0], is(item));
     }
-
     @Test
     public void whenUpdateNameThenReturnNewName() {
         Tracker tracker = new Tracker();
@@ -32,8 +28,6 @@ public class TrackerTest {
         // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
-
-    
     @Test
     public void whenDeleteChangedForNull() {
         Tracker tracker = new Tracker();
