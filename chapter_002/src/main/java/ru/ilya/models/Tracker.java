@@ -32,16 +32,16 @@ public class Tracker {
 			}
 		}
 	}
-    public Item[] findByName(String key) {
-    Item[] result = new Item[position];
-        int j = 0;
-           for (int i = 0; i < position; i++) {
-          if (this.items[i] != null && this.items[i].getName().equals(key)) {
-           result[j++] = this.items[i];
-         }
-         }
-       return  Arrays.copyOf(result, j);
-    }
+	public Item[] findByName(String key) {
+		Item[] result = new Item[position];
+		for (int i = 0; i < position; i++) {
+			if (this.items[i] != null && this.items[i].getName().equals(key)) {
+				result[i] = this.items[i];
+				break;
+			}
+		}
+		return result;
+	}
     public Item[] findAll() {
         Item[] result = new Item[position];
         for (int i = 0; i < position; i++) {
@@ -49,6 +49,7 @@ public class Tracker {
         }
         return result;
     }
+
     public void delete(Item item) {
         for (int index = 0; index != position; index++){
             if (this.items[index].getId().equals(item.getId())){

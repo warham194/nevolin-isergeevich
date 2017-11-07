@@ -17,24 +17,50 @@ public class TrackerTest {
     public void whenUpdateNameThenReturnNewName() {
         Tracker tracker = new Tracker();
         Item previous = new Item("test1","testDescription",123L);
-        // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(previous);
-        // Создаем новую заявку.
         Item next = new Item("test2","testDescription2",1234L);
-        // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
-        // Обновляем заявку в трекере.
         tracker.update(next);
-        // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
     @Test
     public void whenDeleteChangedForNull() {
         Tracker tracker = new Tracker();
-        Item item1 = null;
         Item item2 = new Item("T5", "TD5", 123L);
         tracker.add(item2);
         tracker.delete(item2);
-        assertThat(tracker.getAll()[0], is(item1));
+        assertThat(tracker.getAll().length, is(0));
     }
+    @Test
+    public void findAllTest() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("test1", "testDescription", 123L);
+        Item item2 = new Item("test2", "testDescription", 1234L);
+        Item item3 = new Item("test3", "testDescription", 12345L);
+        tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+        tracker.findAll();
+        assertThat(tracker.getAll().length, is(3));
+    }
+
+    @Test
+    public void findByIdTest() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("test1", "testDescription", 123L);
+        tracker.add(item1);
+        Item result = tracker.findById(item1.getId());
+        assertThat(result, is(item1));
+    }
+
+    @Test
+    public void findByNameTest() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("test1", "testDescription", 123L);
+        tracker.add(item1);
+        Item[] result = tracker.findByName("test1");
+        assertThat(result[0], is(item1));
+    }
+
+
 }
