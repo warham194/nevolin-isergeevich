@@ -7,11 +7,13 @@ public class Tracker {
 	private int position = 0;
 	public static Random RN = new Random();
 
+
 	public Item add(Item item) {
 		item.setId(this.generatedId());
 		this.items[position++] = item;
 		return item;
 	}
+
 	public Item findById(String id){
 		Item result = null;
 		for (Item item : items) {
@@ -22,6 +24,7 @@ public class Tracker {
 		}
 		return result;
 	}
+
 	public void update(Item item) {
 		String id;
 		id = item.getId();
@@ -32,6 +35,7 @@ public class Tracker {
 			}
 		}
 	}
+
 	public Item[] findByName(String key) {
 		Item[] result = new Item[position];
 		for (int i = 0; i < position; i++) {
@@ -42,6 +46,7 @@ public class Tracker {
 		}
 		return result;
 	}
+
     public Item[] findAll() {
         Item[] result = new Item[position];
         for (int i = 0; i < position; i++) {
@@ -49,7 +54,6 @@ public class Tracker {
         }
         return result;
     }
-
     public void delete(Item item) {
         for (int index = 0; index != position; index++){
             if (this.items[index].getId().equals(item.getId())){
@@ -58,7 +62,6 @@ public class Tracker {
                 break;
             }
         }
-
     }
 	public Item[] getAll(){
 		Item[] result = new Item[this.position];
