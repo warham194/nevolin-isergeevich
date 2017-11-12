@@ -13,7 +13,18 @@ public class Item {
         this.create = create;
 
   }
-     public String getName() {
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", create=" + create +
+                '}';
+    }
+
+    public String getName() {
       return this.name;
     }
 
