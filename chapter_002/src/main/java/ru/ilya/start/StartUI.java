@@ -90,18 +90,17 @@ public class StartUI {
 
     }
     private void editItems(){
-        System.out.println("------------ Изменить заявку --------------");
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите имя заявки :");
-        Item item = new Item(name, desc, System.currentTimeMillis());
-        this.tracker.update(item);
+        System.out.println("------------ Удалить заявку --------------");
+        String id = this.input.ask("Введите Id :");
+        Item resId = this.tracker.findById(id);
+        this.tracker.update(resId);
     }
     private void deleteItems(){
         System.out.println("------------ Удалить заявку --------------");
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите имя заявки :");
-        Item item = new Item(name, desc, System.currentTimeMillis());
-        this.tracker.delete(item);
+        String id = this.input.ask("Введите Id :");
+        Item resId = this.tracker.findById(id);
+        this.tracker.delete(resId);
+
 
     }
     private void findName() {
