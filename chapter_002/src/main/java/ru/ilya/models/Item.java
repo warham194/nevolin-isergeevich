@@ -5,7 +5,7 @@ public class Item {
   public String name;
   public String description;
   public long create;
-  public Item(){
+  public Item() {
   }
   public Item(String name, String description, long create) {
         this.name = name;
@@ -16,11 +16,16 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", create=" + create +
+        return "Item{"
+                +
+                "id='" + id + '\''
+                +
+                ", name='" + name + '\''
+                +
+                ", description='" + description + '\''
+                +
+                ", create=" + create
+                +
                 '}';
     }
 
@@ -36,7 +41,7 @@ public class Item {
       return this.create;
      }
 
-     public String getId(){
+     public String getId() {
       return this.id;
      }
 

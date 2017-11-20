@@ -17,9 +17,9 @@ public class TrackerTest {
     @Test
     public void whenUpdateNameThenReturnNewName() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1","testDescription",123L);
+        Item previous = new Item("test1", "testDescription", 123L);
         tracker.add(previous);
-        Item next = new Item("test2","testDescription2",1234L);
+        Item next = new Item("test2", "testDescription2", 1234L);
         next.setId(previous.getId());
         tracker.update(next);
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
