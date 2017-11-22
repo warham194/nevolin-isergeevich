@@ -22,6 +22,7 @@ public class StunInputTest {
 
     @Test
     public void deleteTest() {
+
             Item item = new Item("test", "Desc",123L); // создаем заявку
             Tracker tracker = new Tracker();
             tracker.add(item);
@@ -30,16 +31,17 @@ public class StunInputTest {
             new StartUI(input, tracker).init();
             Item[] result = tracker.findAll();
             assertThat(result, is(expected));
+
     }
     @Test
     public void updateTest() {
+
         Item item = new Item("test", "Desc",123L); // создаем заявку
         Tracker tracker = new Tracker();
         tracker.add(item);
         Input input = new StubInput(new String[] {"2", item.getId(), "test1", "Desc01", "1234L", "6"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll()[0].getName(), is("test1"));
-
     }
     @Test
     public void findByIdTest() {
