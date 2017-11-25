@@ -87,8 +87,13 @@ public class StartUI {
     private void editItems() {
         System.out.println("------------ Удалить заявку --------------");
         String id = this.input.ask("Введите Id :");
-        Item resId = this.tracker.findById(id);
-        this.tracker.update(resId);
+        String name = this.input.ask("Введите name :");
+        String desc = this.input.ask("Введите desc :");
+        Item updated = new Item();
+        updated.setId(id);
+        updated.setName(name);
+        updated.setDesc(desc);
+        this.tracker.update(id, updated);
     }
     private void deleteItems() {
         System.out.println("------------ Удалить заявку --------------");

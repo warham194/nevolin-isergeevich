@@ -31,6 +31,15 @@ public class Tracker {
 			}
 		}
 	}
+	public void update(String id ,Item item) {
+		id = item.getId();
+		for (int index = 0; index != position; index++) {
+			if (this.items[index].getId().equals(id)) {
+				this.items[index] = item;
+				break;
+			}
+		}
+	}
 	public Item[] findByName(String key) {
 		Item[] result = new Item[position];
 		for (int i = 0; i < position; i++) {

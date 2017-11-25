@@ -27,7 +27,7 @@ public class StunInputTest {
             Tracker tracker = new Tracker();
             tracker.add(item);
             Input input = new StubInput(new String[] {"3", item.getId(), "6"});
-            Item[] expected = new Item[] {null};
+            Item[] expected = new Item[] {};
             new StartUI(input, tracker).init();
             Item[] result = tracker.findAll();
             assertThat(result, is(expected));
@@ -35,13 +35,21 @@ public class StunInputTest {
     }
     @Test
     public void updateTest() {
-
         Item item = new Item("test", "Desc",123L); // создаем заявку
         Tracker tracker = new Tracker();
         tracker.add(item);
-        Input input = new StubInput(new String[] {"2", item.getId(), "test1", "Desc01", "1234L", "6"});
+        Input input = new StubInput(
+                new String[] {
+                        "2", // select update menu
+                        item.getId(), // selected item id.
+                        "test1", // enter name
+                        "Desc01", // enter desc
+                        "1234L", // enter create date
+                        "6" // exit
+                }
+        );
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test1"));
+        assertThat(tracker.findById(item.getId()).getName(), is("test1"));
     }
     @Test
     public void findByIdTest() {
