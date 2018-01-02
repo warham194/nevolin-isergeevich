@@ -13,7 +13,7 @@ public class StunInputTest {
     @Test
     public void addTest() {
 
-        Input input = new StubInput(new String[] {"0", "test", "Desc", "6"}); // Создаем массив с последовательностью действий
+        Input input = new StubInput(new String[] {"0", "test", "Desc", "y"}); // Создаем массив с последовательностью действий
         Tracker tracker = new Tracker();
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll()[0].getName(), is("test")); // заодно проверка метода findAll
@@ -26,7 +26,7 @@ public class StunInputTest {
             Item item = new Item("test", "Desc",123L); // создаем заявку
             Tracker tracker = new Tracker();
             tracker.add(item);
-            Input input = new StubInput(new String[] {"3", item.getId(), "6"});
+            Input input = new StubInput(new String[] {"3", item.getId(), "6", "y"});
             Item[] expected = new Item[] {};
             new StartUI(input, tracker).init();
             Item[] result = tracker.findAll();
@@ -45,7 +45,7 @@ public class StunInputTest {
                         "test1", // enter name
                         "Desc01", // enter desc
                         "1234L", // enter create date
-                        "6" // exit
+                        "6", "y" // exit
                 }
         );
         new StartUI(input, tracker).init();
@@ -56,7 +56,7 @@ public class StunInputTest {
         Item item = new Item("test", "Desc",123L); // создаем заявку
         Tracker tracker = new Tracker();
         tracker.add(item);
-        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        Input input = new StubInput(new String[]{"4", item.getId(), "6", "y"});
         String result = item.getName();
         new StartUI(input, tracker);
         assertThat(result, is("test"));
@@ -67,7 +67,7 @@ public class StunInputTest {
         Item item = new Item("test", "Desc",123L); // создаем заявку
         Tracker tracker = new Tracker();
         tracker.add(item);
-        Input input = new StubInput(new String[]{"5", item.getId(), "6"});
+        Input input = new StubInput(new String[]{"5", item.getId(), "6", "y"});
         String result = item.getName();
         new StartUI(input, tracker);
         assertThat(result, is("test"));

@@ -46,13 +46,23 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
+        Tracker tracker = new Tracker();
+        MenuTracker menu = new MenuTracker(this.input, tracker);
+        menu.fillActions();
+         do {
+             menu.show();
+             int key = Integer.valueOf(input.ask("Select:  "));
+             menu.select(key);
+         } while (!"y".equals(this.input.ask("Exit ?  (y)")));
+
+        /*
         boolean exit = false;
         while (!exit) {
             this.showMenu();
             String answer = this.input.ask("Введите пункт меню : ");
             if (ADD.equals(answer)) {
                 this.createItem();
-            } else if (SHOW.equals(answer)) {
+            } else if (SHOW.equals(answer)) {0
                 this.showAllItems();
             } else if (EDIT.equals(answer)) {
                 this.editItems();
@@ -66,8 +76,9 @@ public class StartUI {
                 exit = true;
             }
         }
+        */
     }
-
+ /*
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
@@ -130,7 +141,7 @@ public class StartUI {
         System.out.println("Select:");
         // добавить остальные пункты меню.
     }
-
+*/
     /**
      * Запускт программы.
      * @param args
