@@ -26,7 +26,7 @@ public class StunInputTest {
             Item item = new Item("test", "Desc",123L); // создаем заявку
             Tracker tracker = new Tracker();
             tracker.add(item);
-            Input input = new StubInput(new String[] {"3", item.getId(), "6", "y"});
+            Input input = new StubInput(new String[] {"3", item.getId(), "y"});
             Item[] expected = new Item[] {};
             new StartUI(input, tracker).init();
             Item[] result = tracker.findAll();
