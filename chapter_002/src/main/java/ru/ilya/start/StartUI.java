@@ -38,6 +38,7 @@ public class StartUI {
      * @param input ввод данных.
      * @param tracker хранилище заявок.
      */
+    private int[] range = new int[] {0, 1, 2, 3, 4, 5, 6}; // вопрос
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
@@ -45,13 +46,13 @@ public class StartUI {
     /**
      * Основой цикл программы.
      */
+
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, tracker);
         menu.fillActions();
          do {
              menu.show();
-             int key = Integer.valueOf(input.ask("Select:  "));
-             menu.select(key);
+             menu.select(input.ask("Select:", this.range)); // вопрос по поводу this
          } while (!"y".equals(this.input.ask("Exit ?  (y)")));
 
         /*
@@ -146,6 +147,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
