@@ -5,41 +5,31 @@ package ru.ilya.start;
  */
 public class ValidateInput extends ConsoleInput {
 
-    private final Input input;
 
-    public ValidateInput(final Input input) {
-        this.input = input;
+        private final Input input;
+
+        public ValidateInput(final Input input) {
+            this.input = input;
+        }
+
+        @Override
+        public String ask(String question) {
+            return this.input.ask(question);
+        }
+
+        public int ask(String question, int[] range){
+            boolean invalid = true;
+            int value = -1;
+            do {
+                try {
+                    value = this.input.ask(question, range);
+                    invalid = false;
+                } catch (MenuOutExeption moe) {
+                    System.out.println("Please select key from menu.");
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Please enter validate data again.");
+                }
+            } while (invalid);
+            return  value;
+        }
     }
-
-    @Override
-    public String ask(String question) {
-        return this.input.ask(question);
-    }
-
-    public int ask(String question, int[] range){
-        boolean invalide = true;
-        int value = -1;
-
-        do {
-            try {
-
-                value = super.ask(question, range);
-                invalide = false;
-
-            } catch (NumberFormatException nfe) {
-
-                System.out.println("<=====================================>");
-                System.out.println("Некорректный ввод.");
-                System.out.println("<=====================================>");
-            }catch (MenuOutExeption moe){
-
-                System.out.println("<=====================================>");
-                System.out.println("Некорректный ввод.");
-                System.out.println("<=====================================>");
-            }
-
-        } while (invalide);
-
-        return value;
-    }
-}
