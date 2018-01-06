@@ -76,7 +76,7 @@ public class MenuTracker {
             public void execute(Input input, Tracker tracker) {
                 System.out.println("------------ Добавление новой заявки --------------");
                 String name = input.ask("Введите имя заявки :");
-                String desc = input.ask("Введите имя заявки :");
+                String desc = input.ask("Введите Тему заявки :");
                 Item item = new Item(name, desc, System.currentTimeMillis());
                 tracker.add(item);
                 System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
