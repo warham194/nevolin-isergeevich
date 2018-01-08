@@ -12,7 +12,7 @@ public class ValidateInput extends ConsoleInput {
             this.input = input;
         }
 
-        @Override
+        @Override  // вопрос
         public String ask(String question) {
             return this.input.ask(question);
         }
