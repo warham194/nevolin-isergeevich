@@ -4,8 +4,16 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-
+/**
+ * Test.
+ * @author Ilya
+ * @version 1
+ * @since 0.1
+ */
 public class BoardTest {
+    /**
+     * @Test format.
+     */
     @Test
     public void whenPaintBoardWithWidthThreeAndHeightThreeThenStringWithThreeColsAndThreeRows() {
         Board board = new Board();
@@ -14,7 +22,9 @@ public class BoardTest {
         String expected = String.format("x x%s x %sx x%s", line, line, line);
         assertThat(result, is(expected));
     }
-
+    /**
+     * @Test format.
+     */
     @Test
     public void whenPaintBoardWithWidthFiveAndHeightFourThenStringWithFiveColsAndFourRows() {
         //напишите здесь тест, проверяющий формирование доски 5 на 4.

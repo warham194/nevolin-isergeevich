@@ -10,4 +10,8 @@ public class Profession {
     public void takeMoney(Money money) {
         System.out.println("За услиги взял" + money + "рублей");
     }
+    public String getName(String name){
+        this.name = name;
+        return name;
+    }
 }

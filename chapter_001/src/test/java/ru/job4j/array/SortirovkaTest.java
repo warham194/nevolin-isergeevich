@@ -15,7 +15,7 @@ public class SortirovkaTest {
 
             Sortirovka prov = new Sortirovka();
             int[] array1 = {1, 4, 5, 848};
-            int[] array2 = {5, 7 , 8 ,12 ,900 };
+            int[] array2 = {5, 7, 8,12 ,900};
             int[] rezultTest = {1, 4, 5, 5, 7, 8, 12, 848, 900};
             int[] result = prov.insertSort(array1, array2);
             assertThat(result, is(rezultTest));

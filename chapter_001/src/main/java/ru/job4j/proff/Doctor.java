@@ -7,7 +7,7 @@ public class Doctor extends Profession {
     boolean certificate;
 
     public Medik healPeople(People people){
-        // возвпащает что-то типа Medik
+        System.out.println(this.name + "лечит " + people.getName());
     }
 
 }

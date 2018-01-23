@@ -13,7 +13,7 @@ public class ProverkaSlovaTest {
     public void whenSortArrayWithTenElementsThenSortedArray() {
         //напишите здесь тест, проверяющий сортировку массива из 10 элементов методом пузырька, например {1, 5, 4, 2, 3, 1, 7, 8, 0, 5}.
         ProverkaSlova prov = new ProverkaSlova();
-        prov.contains("Привет", "иве");
-        assertThat(prov, is(true));
+        boolean result = prov.contains("Привет", "иве");
+        assertThat(result, is(true));
     }
 }

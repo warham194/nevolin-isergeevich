@@ -10,7 +10,7 @@ public class Sortirovka {
      * @param a2 args.
      * @return a3.
      */
-    public int[] insertSort (int[] a1, int[] a2) {
+    public int[] insertSort(int[] a1, int[] a2) {
         if (a1 == null) {
             return a2;
         }
@@ -19,15 +19,15 @@ public class Sortirovka {
         }
         int[] a3 = new int[a1.length + a2.length];
 
-        int i=0, j=0;
-        for (int k=0; k<a3.length; k++) {
+        int i = 0, j = 0;
+        for (int k = 0; k < a3.length; k++) {
 
-            if (i > a1.length-1) {
+            if (i > a1.length - 1) {
                 int a = a2[j];
                 a3[k] = a;
-                j++;
-            }
-            else if (j > a2.length-1) {
+                j++;}
+
+            else if (j > a2.length - 1) {
                 int a = a1[i];
                 a3[k] = a;
                 i++;

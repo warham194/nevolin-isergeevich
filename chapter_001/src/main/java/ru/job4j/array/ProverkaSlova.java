@@ -4,20 +4,31 @@ package ru.job4j.array;
  * Created by Lenovo2 on 21.10.2017.
  */
 public class ProverkaSlova {
-    public boolean contains(String origin, String sub){
-        boolean result = false;
+    /**
+     * method for sort array to the end and delete double.
+     * @param origin args
+     * @param origin args
+     *@return result.
+     */
+    public boolean contains(String origin, String sub) {
+        boolean is = false;
 
-        char[] slovo1 = origin.toCharArray();
-        char[] slovo2 = sub.toCharArray();
-            for (int i = 0; i < slovo1.length; i++){
-                for (int j = 0; j < slovo2.length; j++){
-                    if (slovo2[j] == slovo1[i] && ...........){
-                        result = true;
-
+        char[] first = origin.toCharArray();
+        char[] second = sub.toCharArray();
+        for (int i = 0; i < first.length - second.length; i++) {
+            if (first[i] == second[0]) {
+                for (int j = 1; j < second.length; j++) {
+                    if (first[i + j] == second[j]) {
+                        is = true;
                     }
+                    else {
+                        is = false;
+                        break;
+                    }
+                    if (is)  break;
                 }
             }
-
-       return result;
     }
+        return is;
+  }
 }

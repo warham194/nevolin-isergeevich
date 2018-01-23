@@ -1,8 +1,16 @@
 package ru.job4j.loop;
 
-
+/**
+ * Class Paint.
+ * @author Ilya.
+ * @since  2017.10.
+ */
 public class Paint {
-
+    /**
+     * Method calc.
+     * @param h args.
+     * @return builder.toString.
+     */
     public String piramid(int h) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < h; i++) {
