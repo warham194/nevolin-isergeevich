@@ -12,6 +12,17 @@ import ru.ilya.chess.exceptions.OccupiedWayException;
 
         Figure[][] figures = new Figure[8][8];
 
+        public Figure[][] placeFigures(int i, int j, Figure figure) throws FigureNotFoundException {
+
+            figures[i][j] = figure;
+            if (figures [i][j] == figure) {
+                System.out.println("");
+            } else {
+                throw  new FigureNotFoundException();
+            }
+            return figures;
+        }
+
 
         boolean move(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
             boolean result = true;

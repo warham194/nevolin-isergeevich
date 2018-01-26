@@ -9,10 +9,10 @@ import ru.ilya.chess.exceptions.ImpossibleMoveException;
  */
 public class Bishop extends Figure {
 
+
     public Bishop(Cell position) { //вопрос
         super(position);
     }
-    private Cell[] array = new Cell[8];
 
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
@@ -20,34 +20,21 @@ public class Bishop extends Figure {
         int y1 = source.getY();
         int x2 = dest.getX();
         int y2 = dest.getY();
-        int waypoints = 0;
-        Cell[] Hod = new Cell[8];
-
 
         if (Math.abs(x1 - x2) != Math.abs(y1 - y2) || (x2 >= 8 || y2 >= 8) || (x2 < 0 || y2 < 0)) {
             throw new ImpossibleMoveException();
         } else {
-            if ( x1 < x2 && y1 > y2 ) {
-                for (int x = x1 + 1, y = y1 - 1, count = waypoints; x == x2; x++, y--, count++) {
-                    Hod[count] = new Cell(x, y);
-                }
-            } else if ( x1 < x2 && y1 < y2 ) {
-                for (int x = x1 + 1, y = y1 + 1, count = waypoints; x <= x2; x++, y++, count++) {
-                    Hod[count] = new Cell(x, y);
-                }
-            } else if ( x1 > x2 && y1 < y2 ) {
-                for (int x = x1 - 1, y = y1 + 1, count = waypoints; x == x2; x--, y++, count++) {
-                    Hod[count] = new Cell(x, y);
-                }
-            } else if ( x1 > x2 && y1 > y2 ) {
-                for (int x = x1 - 1, y = y1 - 1, count = waypoints; x <= x2; x--, y--, count++) {
-                    Hod[count] = new Cell(x, y);
-                }
+            int moveLength = Math.abs(x1 - x2);
+            Cell[] waypoints = new Cell[moveLength];
+            int horizontal = Integer.compare(x2, x1);
+            int vertical = Integer.compare(y2, y1);
+            for (int index = 0; index != moveLength; index++) {
+                x1 += horizontal;
+                y1 += vertical;
+                waypoints[index] = new Cell(x1, y1);
             }
+            return waypoints;
         }
-
-
-        return Hod;
     }
 
     @Override
