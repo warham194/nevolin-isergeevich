@@ -9,11 +9,9 @@ import ru.ilya.chess.exceptions.OccupiedWayException;
 
 
     public class Board {
-
         Figure[][] figures = new Figure[8][8];
 
         public Figure[][] placeFigures(int i, int j, Figure figure) throws FigureNotFoundException {
-
             figures[i][j] = figure;
             if (figures [i][j] == figure) {
                 System.out.println("");
@@ -22,37 +20,25 @@ import ru.ilya.chess.exceptions.OccupiedWayException;
             }
             return figures;
         }
-
-
         boolean move(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
             boolean result = true;
             if (this.figures[source.getX()][source.getY()] == null) {
                 result = false;
                 throw new FigureNotFoundException();
             }
-
             Figure figure = this.figures[source.getX()][source.getY()];
-
-            Cell[] Hod = figure.way(source, dest);
-
+            Cell[] steps = figure.way(source, dest);
+            for (Cell cell : steps) {
+                if (this.figures[cell.getX()][cell.getY()] != null) {
+                    result = false;
+                    throw new OccupiedWayException();
+                }
+            }
             try {
-                Hod = figure.way(source, dest);
-            } catch (OccupiedWayException o) {
-                System.out.println("The way is occupied");
+
             } catch (ImpossibleMoveException i) {
                 System.out.println("The move is impossible");
             }
-
-            for (Cell cell : Hod) {
-                if (cell == null) {
-                    figure.copy(dest);
-                    break;
-                }
-            }
-
-
-
             return result;
         }
-
     }

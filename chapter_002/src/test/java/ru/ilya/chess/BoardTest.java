@@ -11,7 +11,6 @@ import org.junit.Assert;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 public class BoardTest {
-
     @Test
     public void whenMove() {
         Cell source = new Cell(0, 0);
@@ -19,9 +18,7 @@ public class BoardTest {
         Figure bishop = new Bishop(source);
         Cell[] two = bishop.way(source, dest);
         assertThat(two, is(new Cell[]{new Cell(1,1),new Cell(2,2)}));
-
     }
-
     @Test
     public void whenMoveUnexistFigureThenGetException() throws FigureNotFoundException {
         Board board = new Board();
@@ -50,26 +47,22 @@ public class BoardTest {
             Assert.assertNotEquals("", ex.getMessage());
         }
     }
-    @Test
-    public void whenMoveBishopWithValidOccupiedWayThenGetException() throws OccupiedWayException {
+    @Test(expected = OccupiedWayException.class)
+    public void whenMoveBishopWithValidOccupiedWayThenGetException() {
         Board board = new Board();
-        Cell source = new Cell(3, 4);
-        Cell dest = new Cell(6, 7);
-        Cell occupiedSource = new Cell(6, 5);
-        Cell occupiedDest = new Cell(5, 6);
+        Cell source = new Cell(1, 1);
+        Cell dest = new Cell(3, 3);
+        Cell occupiedSource = new Cell(2, 2);
+        Cell occupiedDest = new Cell(3, 3);
         Bishop one = new Bishop(occupiedSource);
         Bishop two = new Bishop(source);
-        board.placeFigures(6,5,one);
+        board.placeFigures(2,2,one);
         board.move(occupiedSource, occupiedDest);
-        board.placeFigures(3,4,two);
-        try {
-            board.move(source, dest);
-        } catch (OccupiedWayException ex) {
-            Assert.assertNotEquals("", ex.getMessage());
-        }
+        board.placeFigures(1,1,two);
+        board.move(source, dest);
+
+    }
     }
 
 
-    }
-
-
+//@Test(expected = Exception.class)
