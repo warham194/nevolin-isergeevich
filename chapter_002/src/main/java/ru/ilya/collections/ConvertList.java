@@ -7,6 +7,21 @@ package ru.ilya.collections;
 import java.util.ArrayList;
  import java.util.List;
 public class ConvertList {
+    /**
+     * method for convert List<int[]> to ArrayList.
+     *@param list List<int[]>.
+     * @return List <Integer> .
+     */
+    public List<Integer> convert (List<int[]> list){
+        List<Integer> con = new ArrayList<>();
+        for (int[] lines : list){
+            for (int i : lines){
+                con.add(i);
+            }
+        }
+        return con;
+    }
+
 
     /**
      * method for convert int[][] to ArrayList.
@@ -40,12 +55,19 @@ public class ConvertList {
                 }
             }
         } else {
-           int cell2 = (list.size())/rows +1;      //
+            int cell2 = (list.size())/rows;
+            while (cell2 != rows){
+                cell2++;
+            }
+            array2D = new int[rows][cell2];
             for(int i = 0; i < rows; i++){         //
                 for(int j = 0; j < cell2; j++) {   //
                     array2D[i][j] = list.get(q);   //
-                    q++;                           //
-                }                                  //
+                    q++;
+                    if (list.get(q) == null){
+                        array2D[i][j] = 0;
+                    }
+                }
 
         }
 
