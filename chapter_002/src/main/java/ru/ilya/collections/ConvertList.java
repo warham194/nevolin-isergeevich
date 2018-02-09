@@ -55,20 +55,16 @@ public class ConvertList {
                 }
             }
         } else {
-            int cell2 = (list.size())/rows;
-            while (cell2 != rows){
-                cell2++;
-            }
+            int cell2 = (list.size())/rows +1;
             array2D = new int[rows][cell2];
-            for(int i = 0; i < rows; i++){         //
-                for(int j = 0; j < cell2; j++) {   //
-                    array2D[i][j] = list.get(q);   //
-                    q++;
-                    if (list.get(q) == null){
-                        array2D[i][j] = 0;
-                    }
-                }
-
+            int a = 0;
+            for(int i : list){         //
+               if (q == cell2) {
+                   q = 0;
+                   a++;
+               }
+            array2D[a][q] = i;
+            q++;
         }
 
     }
