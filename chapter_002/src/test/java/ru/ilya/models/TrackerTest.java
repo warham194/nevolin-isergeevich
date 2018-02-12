@@ -5,6 +5,7 @@ package ru.ilya.models;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import java.util.ArrayList;
 
 public class TrackerTest {
     @Test
@@ -12,7 +13,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.getAll()[0], is(item));
+        assertThat(tracker.getAll().get(0), is(item));
     }
     @Test
     public void whenUpdateNameThenReturnNewName() {
@@ -28,21 +29,25 @@ public class TrackerTest {
     public void whenDeleteChangedForNull() {
         Tracker tracker = new Tracker();
         Item item2 = new Item("T5", "TD5", 123L);
+        ArrayList<Item> items = new ArrayList<>();
         tracker.add(item2);
         tracker.delete(item2);
-        assertThat(tracker.getAll().length, is(0));
+        assertThat(tracker.getAll(), is(items));
     }
     @Test
     public void findAllTest() {
-        Tracker tracker = new Tracker();
+        ArrayList<Item> items = new ArrayList<>();
         Item item1 = new Item("test1", "testDescription", 123L);
         Item item2 = new Item("test2", "testDescription", 1234L);
         Item item3 = new Item("test3", "testDescription", 12345L);
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+        Tracker tracker = new Tracker();
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        tracker.findAll();
-        assertThat(tracker.getAll().length, is(3));
+       assertThat(tracker.findAll(), is(items));
     }
 
     @Test
@@ -59,7 +64,9 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item1 = new Item("test1", "testDescription", 123L);
         tracker.add(item1);
-        Item[] result = tracker.findByName("test1");
-        assertThat(result[0], is(item1));
+        ArrayList<Item> expected = new ArrayList<>();
+        expected.add(item1);
+     //   Item[] result = tracker.findByName("test1");
+       assertThat(expected, is(tracker.findByName("test1")));
     }
 }

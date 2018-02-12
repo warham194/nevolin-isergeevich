@@ -3,6 +3,7 @@ package ru.ilya.start;
 /**
  * Created by Lenovo2 on 03.01.2018.
  */
+import java.util.ArrayList;
 public class ValidateInput extends ConsoleInput {
 
 
@@ -17,7 +18,7 @@ public class ValidateInput extends ConsoleInput {
             return this.input.ask(question);
         }
 
-        public int ask(String question, int[] range){
+        public int ask(String question, ArrayList<Integer> range){
             boolean invalid = true;
             int value = -1;
             do {

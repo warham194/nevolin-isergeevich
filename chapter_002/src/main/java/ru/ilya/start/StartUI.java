@@ -5,6 +5,8 @@ package ru.ilya.start;
  */
 import ru.ilya.models.*;
 
+import java.util.ArrayList;
+
 
 public class StartUI {
 
@@ -39,8 +41,8 @@ public class StartUI {
      * @param input ввод данных.
      * @param tracker хранилище заявок.
      */
-    private int[] range = new int[]{0, 1, 2, 3, 4, 5, 6}; // вопрос
 
+    private ArrayList<Integer> range = new ArrayList<>();
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;

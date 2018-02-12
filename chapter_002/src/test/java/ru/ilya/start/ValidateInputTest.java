@@ -8,7 +8,7 @@ package ru.ilya.start;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.ArrayList;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -34,7 +34,7 @@ public class ValidateInputTest {
         ValidateInput input = new ValidateInput(
                 new StubInput(new String[] {"invalid", "1"})
         );
-        input.ask("Enter", new int[] {1});
+        input.ask("Enter", new ArrayList<Integer>(1));
         assertThat(
                 this.mem.toString(),
                 is(

@@ -3,18 +3,17 @@ package ru.ilya.models;
 import java.util.*;
 
 public class Tracker {
-	public Item[] items = new Item[100];
-	private int position = 0;
+	private final ArrayList<Item> items = new ArrayList<>();
 	public static Random rn = new Random();
 	public Item add(Item item) {
 		item.setId(this.generatedId());
-		this.items[position++] = item;
+		items.add(item);
 		return item;
 	}
 	public Item findById(String id) {
 		Item result = null;
 		for (Item item : items) {
-			if (item != null && item.getId().equals(id)) {
+			if (item.getId().equals(id)) {
 				result = item;
 				break;
 			}
@@ -22,55 +21,45 @@ public class Tracker {
 		return result;
 	}
 	public void update(Item item) {
-		String id;
-		id = item.getId();
-		for (int index = 0; index != position; index++) {
-			if (this.items[index].getId().equals(id)) {
-				this.items[index] = item;
-				break;
+		for (Item upItem : this.items) {
+			if (upItem != null && upItem.getId().equals(item.getId())) {
+				upItem.setCreate(item.getCreate());
+				upItem.setDesc(item.getDescription());
+				upItem.setName(item.getName());
 			}
 		}
+
 	}
-	public void update(String id ,Item item) {
-		id = item.getId();
-		for (int index = 0; index != position; index++) {
-			if (item != null && this.items[index].getId().equals(id)) {
-				this.items[index] = item;
-				break;
+
+	public ArrayList<Item> findByName(String key) {
+		ArrayList<Item> findname = new ArrayList<>();
+		for (Item a : items) {
+			if (a.getName().equals(key)) {
+				findname.add(a);
 			}
 		}
+		return findname;
 	}
-	public Item[] findByName(String key) {
-		Item[] result = new Item[position];
-		for (int i = 0; i < position; i++) {
-			if (this.items[i] != null && this.items[i].getName().equals(key)) {
-				result[i] = this.items[i];
-				break;
-			}
-		}
-		return result;
-	}
-    public Item[] findAll() {
-        Item[] result = new Item[position];
-        for (int i = 0; i < position; i++) {
-            result[i] = this.items[i];
-        }
-        return result;
+	public ArrayList<Item> findAll() {
+		return this.items;
     }
     public void delete(Item item) {
-        for (int index = 0; index != position; index++) {
-            if (this.items[index].getId().equals(item.getId())) {
-                System.arraycopy(this.items, index + 1, this.items, index, position - index);
-                position--;
-                break;
-            }
-        }
+		Item vspomogatelniyItem;
+		Iterator<Item> item1 = this.items.iterator();
+		while (item1.hasNext()) {
+			vspomogatelniyItem = item1.next();
+			if (vspomogatelniyItem.getId().equals(item.getId())) {
+				item1.remove();
+			}
+		}
     }
 
-	public Item[] getAll() {
-		Item[] result = new Item[this.position];
-		for (int index = 0; index != this.position; index++) {
-			result[index] = this.items[index];
+	 public List<Item> getAll(){
+		 List<Item> result = new ArrayList<>();
+		 int q = 0;
+		for (Item a : items) {
+			result.add(items.get(q));
+			q++;
 		}
 		return result;
 	}

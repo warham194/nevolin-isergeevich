@@ -6,6 +6,9 @@ package ru.ilya.models;
 
 import org.junit.Test;
 import ru.ilya.start.*;
+
+import java.util.ArrayList;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 public class StunInputTest {
@@ -16,21 +19,20 @@ public class StunInputTest {
         Input input = new StubInput(new String[] {"0", "test", "Desc", "y"}); // Создаем массив с последовательностью действий
         Tracker tracker = new Tracker();
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test")); // заодно проверка метода findAll
+        assertThat(tracker.findAll().get(0).getName(), is("test")); // заодно проверка метода findAll
     }
 
 
     @Test
     public void deleteTest() {
-
             Item item = new Item("test", "Desc",123L); // создаем заявку
             Tracker tracker = new Tracker();
             tracker.add(item);
-            Input input = new StubInput(new String[] {"3", item.getId(), "y"});
-            Item[] expected = new Item[] {};
+            Item result = tracker.findAll().get(0);
+            ArrayList<Item> expected = new ArrayList<>();
+            Input input = new StubInput(new String[] {"5", result.getId(), "y"});
             new StartUI(input, tracker).init();
-            Item[] result = tracker.findAll();
-            assertThat(result, is(expected));
+            assertThat(tracker.findAll(), is(expected));
 
     }
     @Test
@@ -40,7 +42,7 @@ public class StunInputTest {
         tracker.add(item);
         Input input = new StubInput(
                 new String[] {
-                        "2", // select update menu
+                        "4", // select update menu
                         item.getId(), // selected item id.
                         "test1", // enter name
                         "Desc01", // enter desc
@@ -49,7 +51,7 @@ public class StunInputTest {
                 }
         );
         new StartUI(input, tracker).init();
-        assertThat(tracker.findById(item.getId()).getName(), is("test1"));
+        assertThat(tracker.findById(item.getId()).getName(), is(item.getName()));
     }
     @Test
     public void findByIdTest() {

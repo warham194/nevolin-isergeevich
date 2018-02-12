@@ -41,6 +41,7 @@ public class Item {
       return this.create;
      }
 
+     public long setCreate(long create) { return  this.create;}
      public String getId() {
       return this.id;
      }

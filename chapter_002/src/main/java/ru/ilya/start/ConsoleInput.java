@@ -1,7 +1,7 @@
 package ru.ilya.start;
 
 import java.util.Scanner;
-
+import java.util.ArrayList;
 /**
  * Created by Lenovo2 on 10.11.2017.
  */
@@ -13,10 +13,10 @@ public class ConsoleInput implements Input {
         return scanner.next();
     }
 
-    public int ask(String question, int[] range) {
+    public int ask(String question, ArrayList<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
-        for(int value : range){
+        for(int value : range) {
             if(value == key) {
                 exist = true;
                 break;
