@@ -44,9 +44,23 @@ public class ConvertList {
      * @return the array2D int[][]
      */
     public int[][] toArray (List<Integer> list, int rows){
-        int cell = (list.size())/rows;
-        int[][] array2D = new int[rows][cell];
+      //  int cell = (list.size())/rows;
         int q = 0;
+        int a = 0;
+        double s = Math.ceil(rows);
+        int value = (int) s;
+        int[][] array2D = new int[rows][value];
+            for(int i : list) {
+            if (q == value) {
+                q = 0;
+                a++;
+            }
+            array2D[a][q] = i;
+            q++;
+        }
+
+
+        /*
         if (list.size() % rows == 0) {
             for(int i = 0; i < rows; i++) {
                 for(int j = 0; j < cell; j++) {
@@ -68,6 +82,7 @@ public class ConvertList {
         }
 
     }
+    */
         return array2D;
    }
 }

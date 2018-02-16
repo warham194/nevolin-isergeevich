@@ -46,12 +46,12 @@ public class ConverListTest {
     @Test
     public void testToArray2() {
         List<Integer> list1 = new ArrayList<>();
-        for (int i = 1; i < 8; i++) {
+        for (int i = 1; i < 9; i++) {
             list1.add(i);
         }
         ConvertList convertation = new ConvertList();
         int[][] tmp = convertation.toArray(list1, 3);
-        int[][] expected = new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 0, 0}};
+        int[][] expected = new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
         assertThat(tmp, is(expected));
     }
 
