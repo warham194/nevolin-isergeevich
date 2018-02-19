@@ -17,7 +17,7 @@ public class BoardTest {
         Cell dest = new Cell(2, 2);
         Figure bishop = new Bishop(source);
         Cell[] two = bishop.way(source, dest);
-        assertThat(two, is(new Cell[]{new Cell(1,1),new Cell(2,2)}));
+        assertThat(two, is(new Cell[]{new Cell(1, 1), new Cell(2, 2)}));
     }
     @Test
     public void whenMoveUnexistFigureThenGetException() throws FigureNotFoundException {
@@ -33,14 +33,13 @@ public class BoardTest {
         }
     }
     @Test
-    public void whenMoveFigureWithValidPositiveUpWayThenMove() throws ImpossibleMoveException{
+    public void whenMoveFigureWithValidPositiveUpWayThenMove() throws ImpossibleMoveException {
         Board board = new Board();
         Cell source = new Cell(0, 0);
         Cell dest = new Cell(2, 3);
         Figure bishop = new Bishop(source);
         try {
-            board.placeFigures(0,0,bishop);
-            Cell[] Hod = bishop.way(source, dest);
+            board.placeFigures(0, 0, bishop);
             board.move(source, dest);
             Assert.fail("ImpossibleMoveException expected");
         } catch (ImpossibleMoveException ex) {
@@ -56,9 +55,9 @@ public class BoardTest {
         Cell occupiedDest = new Cell(3, 3);
         Bishop one = new Bishop(occupiedSource);
         Bishop two = new Bishop(source);
-        board.placeFigures(2,2,one);
+        board.placeFigures(2, 2, one);
         board.move(occupiedSource, occupiedDest);
-        board.placeFigures(1,1,two);
+        board.placeFigures(1, 1, two);
         board.move(source, dest);
 
     }

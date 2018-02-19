@@ -43,7 +43,7 @@ public class PaintTest {
     }
 
     @Test
-    public void whenDrawTriangleTest(){
+    public void whenDrawTriangleTest() {
         // получаем ссылку на стандартный вывод в консоль.
         PrintStream stdout = System.out;
         // Создаем буфур для хранения вывода.

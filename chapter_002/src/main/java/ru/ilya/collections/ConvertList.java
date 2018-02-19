@@ -12,10 +12,10 @@ public class ConvertList {
      *@param list List<int[]>.
      * @return List <Integer> .
      */
-    public List<Integer> convert (List<int[]> list){
+    public List<Integer> convert(List<int[]> list) {
         List<Integer> con = new ArrayList<>();
-        for (int[] lines : list){
-            for (int i : lines){
+        for (int[] lines : list) {
+            for (int i : lines) {
                 con.add(i);
             }
         }
@@ -28,10 +28,10 @@ public class ConvertList {
      *@param array int[][]
      * @return the listLoop List <Integer> Array
      */
-    public List<Integer> toList (int[][] array){
+    public List<Integer> toList(int[][] array) {
         List<Integer> list = new ArrayList<>();
-        for (int[] lines : array){
-            for (int i : lines){
+        for (int[] lines : array) {
+            for (int i : lines) {
                 list.add(i);
             }
         }
@@ -43,22 +43,21 @@ public class ConvertList {
      * @param rows \
      * @return the array2D int[][]
      */
-    public int[][] toArray (List<Integer> list, int rows){
+    public int[][] toArray(List<Integer> list, int rows) {
       //  int cell = (list.size())/rows;
         int q = 0;
         int a = 0;
         double s = Math.ceil(rows);
         int value = (int) s;
         int[][] array2D = new int[rows][value];
-            for(int i : list) {
+        for (int i : list) {
             if (q == value) {
                 q = 0;
                 a++;
             }
             array2D[a][q] = i;
             q++;
-        }
-
+    }
 
         /*
         if (list.size() % rows == 0) {

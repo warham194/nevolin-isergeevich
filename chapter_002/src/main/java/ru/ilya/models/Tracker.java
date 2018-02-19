@@ -54,7 +54,7 @@ public class Tracker {
 		}
     }
 
-	 public List<Item> getAll(){
+	 public List<Item> getAll() {
 		 List<Item> result = new ArrayList<>();
 		 int q = 0;
 		for (Item a : items) {

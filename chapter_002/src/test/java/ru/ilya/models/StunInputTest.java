@@ -25,7 +25,7 @@ public class StunInputTest {
 
     @Test
     public void deleteTest() {
-            Item item = new Item("test", "Desc",123L); // создаем заявку
+            Item item = new Item("test", "Desc", 123L); // создаем заявку
             Tracker tracker = new Tracker();
             tracker.add(item);
             Item result = tracker.findAll().get(0);
@@ -37,7 +37,7 @@ public class StunInputTest {
     }
     @Test
     public void updateTest() {
-        Item item = new Item("test", "Desc",123L); // создаем заявку
+        Item item = new Item("test", "Desc", 123L); // создаем заявку
         Tracker tracker = new Tracker();
         tracker.add(item);
         Input input = new StubInput(
@@ -55,7 +55,7 @@ public class StunInputTest {
     }
     @Test
     public void findByIdTest() {
-        Item item = new Item("test", "Desc",123L); // создаем заявку
+        Item item = new Item("test", "Desc", 123L); // создаем заявку
         Tracker tracker = new Tracker();
         tracker.add(item);
         Input input = new StubInput(new String[]{"4", item.getId(), "6", "y"});
@@ -66,7 +66,7 @@ public class StunInputTest {
 
     @Test
     public void findByName() {
-        Item item = new Item("test", "Desc",123L); // создаем заявку
+        Item item = new Item("test", "Desc", 123L); // создаем заявку
         Tracker tracker = new Tracker();
         tracker.add(item);
         Input input = new StubInput(new String[]{"5", item.getId(), "6", "y"});

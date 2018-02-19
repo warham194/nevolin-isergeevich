@@ -9,25 +9,27 @@ package ru.ilya.chess;
  * x - позиция по вертикали
  * y - позиция по горизонтали
  */
-public class Cell{
+public class Cell {
     @Override
     public String toString() {
-        return "Cell{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "Cell{" + "x=" + x + ", y=" + y + '}';
     }
-
     private int x;
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Cell cell = (Cell) o;
 
-        if (x != cell.x) return false;
+        if (x != cell.x) {
+            return false;
+        }
         return y == cell.y;
     }
 
@@ -40,7 +42,7 @@ public class Cell{
 
     private int y;
 
-    public Cell(int x, int y){
+    public Cell(int x, int y) {
         this.x = x;
         this.y = y;
     }

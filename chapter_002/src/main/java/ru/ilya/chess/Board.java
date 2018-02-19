@@ -35,7 +35,7 @@ import ru.ilya.chess.exceptions.OccupiedWayException;
                 }
             }
             try {
-
+                figure.way(source, dest);
             } catch (ImpossibleMoveException i) {
                 System.out.println("The move is impossible");
             }

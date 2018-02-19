@@ -18,7 +18,7 @@ public class ValidateInput extends ConsoleInput {
             return this.input.ask(question);
         }
 
-        public int ask(String question, ArrayList<Integer> range){
+        public int ask(String question, ArrayList<Integer> range) {
             boolean invalid = true;
             int value = -1;
             do {

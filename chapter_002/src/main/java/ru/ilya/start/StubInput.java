@@ -5,9 +5,9 @@ package ru.ilya.start;
  */
 import java.util.ArrayList;
 public class StubInput implements Input {
-    private String[] answers ;
+    private String[] answers;
     private int position = 0;
-    public StubInput(String[] answers){
+    public StubInput(String[] answers) {
         this.answers = answers;
     }
 
@@ -15,7 +15,7 @@ public class StubInput implements Input {
         return answers[position++];
     }
 
-    public int ask(String question, ArrayList<Integer> range){
-        return Integer.parseInt(answers[position++]);// вопрос
+    public int ask(String question, ArrayList<Integer> range) {
+        return Integer.parseInt(answers[position++]);
     }
 }

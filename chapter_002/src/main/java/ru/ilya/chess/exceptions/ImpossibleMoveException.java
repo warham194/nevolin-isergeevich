@@ -5,7 +5,7 @@ package ru.ilya.chess.exceptions;
  */
 public class ImpossibleMoveException extends RuntimeException {
 
-    public ImpossibleMoveException(){
+    public ImpossibleMoveException() {
         super();
     }
 

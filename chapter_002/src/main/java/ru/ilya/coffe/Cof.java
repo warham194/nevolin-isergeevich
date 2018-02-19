@@ -22,9 +22,6 @@ public class Cof {
                     System.out.println("Monetka " + coins[i]);
                     result.add(coins[i]);
                     i++;
-
-
-
                 }
 
             }

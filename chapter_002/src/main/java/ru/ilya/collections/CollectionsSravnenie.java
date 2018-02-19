@@ -16,18 +16,20 @@ public class CollectionsSravnenie {
         Set<String> list3 = new TreeSet<>();
         CollectionsSravnenie col = new CollectionsSravnenie();
         int amount = 7300;
-        long first = col.add(list1,amount);
+        long first = col.add(list1, amount);
         System.out.println("Время добавления элементов в список типа ArrayList равно  " + first);
-        long second = col.add(list2,amount);
+        long second = col.add(list2, amount);
         System.out.println("Время добавления элементов в список типа LinkedList равно  " + second);
-        long third = col.add(list3,amount);
+        long third = col.add(list3, amount);
         System.out.println("Время добавления элементов в список типа TreeSet равно   " + third);
-        long first2 =  col.del(list1,amount);
-        long second2 = col.del(list2,amount);
-        long third2 = col.del(list3,amount);
+        System.out.println(list1.size());
+        long first2 =  col.del(list1, amount);
+        long second2 = col.del(list2, amount);
+        long third2 = col.del(list3, amount);
         System.out.println("Время удаления  элементов из Arraylist равно " + first2);
         System.out.println("Время удаления  элементов из LinkedList равно " + second2);
         System.out.println("Время удаления   элементов из TreeSet равно " + third2);
+        System.out.println(list1.size());
 
     } // вопрос
     public long add(Collection<String> collection, int amount) {
@@ -42,9 +44,9 @@ public class CollectionsSravnenie {
     public long del(Collection<String> collection, int amount) {
 
         Iterator<String> iterator = collection.iterator();
-        long start=System.currentTimeMillis();
-        while( iterator.hasNext() && amount > 0) {
-            collection.remove(""); // вопрос
+        long start = System.currentTimeMillis();
+        while (iterator.hasNext() && amount > 0) {
+            collection.remove("Строка №" + 700); // вопрос
             amount--;
         }
         long end = System.currentTimeMillis();
