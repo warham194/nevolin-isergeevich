@@ -5,13 +5,13 @@ package ru.job4j.proff;
  */
 public class Profession {
     public String name;
-    public int age;
-
+    public int age = 0;
+/*
     public void takeMoney(Money money) {
         System.out.println("За услиги взял" + money + "рублей");
     }
     public String getName(String name){
         this.name = name;
         return name;
-    }
+    }*/
 }

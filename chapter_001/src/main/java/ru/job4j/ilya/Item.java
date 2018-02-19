@@ -8,7 +8,7 @@ public class Item {
     public String name;
     public String description;
     public long create;
-    public Item(){
+    public Item() {
     }
     public Item(String name, String description, long create) {
         this.name = name;
@@ -28,7 +28,7 @@ public class Item {
         return this.create;
     }
 
-    public String getId(){
+    public String getId() {
         return this.id;
     }
 

@@ -9,14 +9,14 @@ public class Tracker {
 
     public Item[] items = new Item[100];
     private int position = 0;
-    public static Random RN = new Random();
+    public static Random rn = new Random();
 
     public void add(Item item) {
         item.setId(this.generatedId());
         this.items[position++] = item;
     }
 
-    public Item findById(String id){
+    public Item findById(String id) {
         Item result = null;
         for (Item item : items) {
             if (item != null && item.getId().equals(id)) {
@@ -39,6 +39,9 @@ public class Tracker {
         }
     }
     private String generatedId() {
-        return String.valueOf(System.currentTimeMillis() + RN.nextInt());
+        return String.valueOf(System.currentTimeMillis() + rn.nextInt());
     }
+
+
+
 }

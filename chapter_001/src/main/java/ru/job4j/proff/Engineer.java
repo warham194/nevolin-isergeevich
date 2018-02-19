@@ -6,8 +6,9 @@ package ru.job4j.proff;
 public class Engineer extends Profession {
     boolean diplom;
     int experienceYers;
-
+/*
     public Create chertej(Proekt proekt){
         //// возвпащает что-то типа Create
     }
+    */
 }

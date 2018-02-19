@@ -7,7 +7,7 @@ public class Teacher extends Profession {
     private boolean diplom;
     private  int experienceYers;
     int ocenka;
-
+/*
     public boolean iskluchitStudenta (Student student){
         boolean resultat = false;
          if (ocenka == 2) {
@@ -19,5 +19,5 @@ public class Teacher extends Profession {
     public Knoledge teach(Student student){
           // должен вернуть что-то типа Knoledge
     }
-
+*/
 }

@@ -5,9 +5,9 @@ package ru.job4j.proff;
  */
 public class Doctor extends Profession {
     boolean certificate;
-
-    public Medik healPeople(People people){
+/*
+    public Medik healPeople(People people) {
         System.out.println(this.name + "лечит " + people.getName());
     }
-
+*/
 }

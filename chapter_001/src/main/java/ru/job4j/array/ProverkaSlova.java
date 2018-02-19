@@ -20,12 +20,13 @@ public class ProverkaSlova {
                 for (int j = 1; j < second.length; j++) {
                     if (first[i + j] == second[j]) {
                         is = true;
-                    }
-                    else {
+                    } else {
                         is = false;
                         break;
                     }
-                    if (is)  break;
+                    if (is)  {
+                        break;
+                    }
                 }
             }
     }
