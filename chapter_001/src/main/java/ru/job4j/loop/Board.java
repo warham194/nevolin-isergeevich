@@ -24,7 +24,7 @@ public class Board {
                 }
 
             }
-            builder.append("\r\n");
+            builder.append(System.lineSeparator());
         }
 
         return builder.toString();
