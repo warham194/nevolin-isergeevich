@@ -18,11 +18,13 @@ public class ListCompare implements Comparator<List<Integer>> {
     @Override
     public int compare(List<Integer> left, List<Integer> right) {
         int result = 0;
-            for (int leftIndex = 0; leftIndex < left.size(); leftIndex++) {
-                for (int rightIndex = 0; rightIndex < right.size(); rightIndex++) {
-                    result = Integer.compare(left.get(leftIndex), right.get(rightIndex));
-                }
-             }
+        for (int leftIndex = 0, rightIndex = 0; leftIndex < left.size() && rightIndex < right.size(); leftIndex++, rightIndex++) {
+            result = Integer.compare(left.get(leftIndex), right.get(rightIndex));
+            if (leftIndex == left.size() - 1 && rightIndex < right.size() - 1) {
+                result = -1;
+                break;
+            }
+        }
         return result;
     }
 }
