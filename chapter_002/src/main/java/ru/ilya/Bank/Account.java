@@ -1,4 +1,4 @@
-package ru.ilya.Bank;
+package ru.ilya.bank;
 
 /**
  * Created by Lenovo2 on 15.03.2018.

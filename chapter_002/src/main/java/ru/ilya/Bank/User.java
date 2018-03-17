@@ -1,4 +1,4 @@
-package ru.ilya.Bank;
+package ru.ilya.bank;
 
 /**
  * Created by Lenovo2 on 15.03.2018.
@@ -26,17 +26,19 @@ public class User implements Comparable<User> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         User user = (User) o;
-        if (!name.equals(user.name)) {
+
+        if (name != null ? !name.equals(user.name) : user.name != null) {
             return false;
         }
-        return passport.equals(user.passport);
+        return passport != null ? passport.equals(user.passport) : user.passport == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + passport.hashCode();
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (passport != null ? passport.hashCode() : 0);
         return result;
     }
 

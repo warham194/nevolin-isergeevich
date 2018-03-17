@@ -1,4 +1,4 @@
-package ru.ilya.Bank;
+package ru.ilya.bank;
 
 import java.util.LinkedList;
 
@@ -18,7 +18,7 @@ public class Bank {
      * @param user
      */
     public void addUser(User user) {
-        this.users.put(user, new LinkedList<Account>());
+        this.users.putIfAbsent(user, new LinkedList<Account>());
     }
     /**
      * Удаление клиента
@@ -34,7 +34,9 @@ public class Bank {
      * @param account
      */
     public void addAccountToUser(String passport, Account account) {
-        this.users.get(findByPassport(passport)).add(account);
+        if (!this.users.get(findByPassport(passport)).contains(account)) {
+            this.users.get(findByPassport(passport)).add(account);
+        }
     }
     /**
      * удалить счет клиента
@@ -42,7 +44,7 @@ public class Bank {
      * @param account
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        this.users.get(findByPassport(passport)).remove(account);
+            this.users.get(findByPassport(passport)).remove(account);
     }
 
     /**
@@ -73,35 +75,32 @@ public class Bank {
     }
 
 
-    public boolean transferMoney(String srcPassport, String srcRequisite, String dstRequisite, double amount) {
+    public boolean transferMoney(String srcPassport, String srcRequisite, String dstPassport, String dstRequisite, double amount) {
         boolean result = false;
-        User client = null;
+        User client1 = null;
+        User client2 = null;
         double schet = 0;
         double dstSchet = 0;
-        for (User user : this.users.keySet()) {
-            if (user.getPassport().equals(srcPassport)) {
-                client = user;
-                break;
-            }
-        }
-        for (Account account : this.users.get(client)) {
+        client1 = findByPassport(srcPassport);
+        client2 = findByPassport(dstPassport);
+
+        for (Account account : this.users.get(client1)) {
             if (account.getRequisites().equals(srcRequisite) && account.getValue() >= amount) {
                 schet = account.getValue() - amount;
                 account.setValue(schet);
-                List<Account> poisk = new ArrayList<>();
-                for (User user : this.users.keySet()) {
-                    poisk = this.users.get(user);
-                }
-                for (Account account1 : poisk) {
+
+            }
+        }
+                for (Account account1 : this.users.get(client2)) {
                     if (account1.getRequisites().equals(dstRequisite)) {
                         dstSchet = account1.getValue() + amount;
                         account1.setValue(dstSchet);
                         result = true;
-                        break;
+
                     }
                 }
-            }
-        }
+
+
         return result;
     }
 }
