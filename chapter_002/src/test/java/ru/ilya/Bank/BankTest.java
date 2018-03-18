@@ -71,8 +71,8 @@ public class BankTest {
     public void whenCallUserAccounts() {
         Bank bank = new Bank();
         User user = new User("Ilya", "Nevolin");
-        Account accountOne = new Account("0123456789", 0.0);
-        Account accountTwo = new Account("0123456789", 0.0);
+        Account accountOne = new Account("00123456789", 0.0);
+        Account accountTwo = new Account("00123456789", 0.0);
         bank.addUser(user);
         bank.addAccountToUser("Nevolin", accountOne);
         bank.addAccountToUser("Nevolin", accountTwo);
