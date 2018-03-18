@@ -43,7 +43,7 @@ public class BankTest {
     @Test
     public void whenAddAccount() {
         Bank bank = new Bank();
-        User user = new User("Ilya", "Nevolin");
+        User user = new User("Ilqa", "Nevolin");
         bank.addUser(user);
         bank.addAccountToUser("Nevolin", new Account("1234", 0.0));
         Assert.assertThat(bank.users.get(user).get(0).getRequisites(), is("1234"));
@@ -56,7 +56,7 @@ public class BankTest {
     @Test
     public void whenDeleteAccount() {
         Bank bank = new Bank();
-        User user = new User("Ilya", "Nevolin");
+        User user = new User("Illya", "Nevolin");
         Account account = new Account("0123", 0.0);
         bank.addUser(user);
         bank.addAccountToUser("Nevolin", account);
