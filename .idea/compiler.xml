@@ -10,7 +10,6 @@
         <module name="chapter_001 (1)" />
         <module name="chapter_002" />
         <module name="chapter_002 (1)" />
-        <module name="chapter_003" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
