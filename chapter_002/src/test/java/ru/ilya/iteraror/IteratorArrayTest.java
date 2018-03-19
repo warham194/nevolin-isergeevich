@@ -17,12 +17,12 @@ public class IteratorArrayTest {
     private Iterator<Integer> it;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         it = new IteratorArray(new int[][]{{1, 2, 7}, {4, 5, 6}});
     }
 
     @Test
-    public void hasNextNextSequentialInvocation () {
+    public void hasNextNextSequentialInvocation() {
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(1));
         assertThat(it.hasNext(), is(true));
@@ -39,7 +39,7 @@ public class IteratorArrayTest {
     }
 
     @Test
-    public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation () {
+    public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation() {
         assertThat(it.next(), is(1));
         assertThat(it.next(), is(2));
         assertThat(it.next(), is(7));
@@ -49,7 +49,7 @@ public class IteratorArrayTest {
     }
 
     @Test
-    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
+    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
         assertThat(it.hasNext(), is(true));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(1));
@@ -60,7 +60,7 @@ public class IteratorArrayTest {
         assertThat(it.next(), is(6));
     }
     @Test(expected = NoSuchElementException.class)
-    public void shoulThrowNoSuchElementException () {
+    public void shoulThrowNoSuchElementException() {
         it = new IteratorArray(new int[][]{});
         it.next();
     }
