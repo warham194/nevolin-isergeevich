@@ -10,8 +10,8 @@ import java.util.NoSuchElementException;
 public class IteratorArray implements Iterator {
 
     private final int[][] value;
-    private int index1 = 0;
-    private int index2 = 0;
+    private int indexOne = 0;
+    private int indexTwo = 0;
 
     public IteratorArray(int[][] value) {
         this.value = value;
@@ -19,20 +19,20 @@ public class IteratorArray implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return value.length > index1 && value[index1].length > index2; //
+        return value.length > indexOne && value[indexOne].length > indexTwo; //
     }
 
     @Override
     public Object next() {
-        if (Arrays.equals(value, new int[][]{})) {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        int result = value[index1][index2];
-        if (index2 == value[index1].length - 1) {
-            index2 = 0;
-            index1++;
+        int result = value[indexOne][indexTwo];
+        if (indexTwo == value[indexOne].length - 1) {
+            indexTwo = 0;
+            indexOne++;
         } else {
-            index2++;
+            indexTwo++;
         }
         return result;
     }
