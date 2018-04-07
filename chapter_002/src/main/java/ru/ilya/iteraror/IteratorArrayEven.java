@@ -18,12 +18,8 @@ public class IteratorArrayEven implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        boolean result = false;
         /*
-        if (Arrays.equals(value, new int[]{})) {   проверка должна быть в методе next() или hasNext()?
-            throw new NoSuchElementException();
-        }
-         */
+         boolean result = false;
         if (index < value.length - 1) {
             for (int a = index; a < value.length; a++) {
                 if (value[a] % 2 == 0) {
@@ -33,10 +29,24 @@ public class IteratorArrayEven implements Iterator<Integer> {
             }
         }
         return result;
+         */
+        boolean result = false;
+        for (int a = index; a < value.length; a++) {
+            if (value[a] % 2 == 0) {
+                index = a;
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
     @Override
-    public Integer next() {
+    public Integer next() {  //{1, 2, 3, 4, 5, 6, 7}
+        if (!this.hasNext()) {
+            throw new NoSuchElementException();
+        }
+        /*
         int result = 0;
         for (int i = index; i < value.length; i++) {
             if (value[i] % 2 == 0 ) {
@@ -44,11 +54,10 @@ public class IteratorArrayEven implements Iterator<Integer> {
                 index++;
                 break;
             }
-            if (hasNext() == false) {
-                throw new NoSuchElementException();
-            }
             index++;
         }
         return result;
+        */
+        return this.value[this.index++];
     }
 }

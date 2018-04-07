@@ -1,5 +1,6 @@
 package ru.ilya.iteraror;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -61,6 +62,4 @@ public class IteratorArrayEvenTest {
         assertThat(it.hasNext(), is(true)); // ошибка в этой строке
         assertThat(it.next(), is(8));
     }
-
-
 }
