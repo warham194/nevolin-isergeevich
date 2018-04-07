@@ -21,12 +21,11 @@ public class IteratorPrimeIt implements Iterator<Integer> {
     @Override
     public boolean hasNext() {
         boolean result = false;
-        if (index < value.length - 1) {
-            for (int a = index; a < value.length; a++) {
-                if (prime(value[a])) {
-                    result = true;
-                    break;
-                }
+        for (int a = index; a < value.length; a++) {
+            if (prime(value[a])) {
+                index = a;
+                result = true;
+                break;
             }
         }
         return result;
@@ -34,20 +33,10 @@ public class IteratorPrimeIt implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        int result = 0;
-        for (int i = index; i < value.length; i++) {
-            if (!this.hasNext()) {
-                throw new NoSuchElementException();
-            }
-            if (prime(value[i])) {
-                result = value[i];
-                index++;
-                break;
-            }
-
-            index++;
+        if (!this.hasNext()) {
+            throw new NoSuchElementException();
         }
-        return result;
+        return this.value[this.index++];
     }
     /**
      *  Является ли число простым.
@@ -56,17 +45,12 @@ public class IteratorPrimeIt implements Iterator<Integer> {
      */
     private boolean prime(int a) {
         boolean result = true;
-        double s = sqrt(a);
-        if (a < 2) {
+        if (a <= 1) {
             result = false;
-        }  else if (a % 2 == 0) {
-            result = false;
-        } else {
-            for (int i = 2; i <= s; i++) {
-                if (a % i == 0) {
-                    result = false;
-                    break;
-                }
+        }
+        for (int i = 2; i <= Math.sqrt(a); i++) {
+            if (a % i == 0) {
+                result = false;
             }
         }
         return result;
