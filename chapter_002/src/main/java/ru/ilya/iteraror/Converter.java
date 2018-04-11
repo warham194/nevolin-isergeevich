@@ -16,12 +16,12 @@ public class Converter {
             @Override
             public boolean hasNext() {
                 boolean result = false;
-                if (this.iter.hasNext()) {
+                if (iter.hasNext()) {
                     result = true;
                 } else {
-                    while (this.main.hasNext()) {
-                        this.iter = this.main.next();
-                        if (this.iter.hasNext()) {
+                    while (main.hasNext()) {
+                        this.iter = main.next();
+                        if (iter.hasNext()) {
                             result = true;
                             break;
                         }
@@ -32,17 +32,13 @@ public class Converter {
 
             @Override
             public Integer next() {
-                int temp = 0;
                 if (!this.hasNext()) {
                     throw new NoSuchElementException();
                 }
-                if (this.main.hasNext()) {
-                    temp = this.iter.next();
-                } else if (iter == null || !this.iter.hasNext()){
-                    this.iter = this.main.next();
-                    temp = iter.next();
+                if (!iter.hasNext() && main.hasNext()) {
+                    iter = main.next();
                 }
-                return temp;
+                return iter.next();
             }
         };
     }
