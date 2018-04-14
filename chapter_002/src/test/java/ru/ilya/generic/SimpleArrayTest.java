@@ -66,14 +66,9 @@ public class SimpleArrayTest {
     }
 
     @Test
-    public void whenDeleteElementFromSimpleArray() {
-
-        simpleArray.delete(1);
-        simpleArray.delete(4);
-        Assert.assertThat(simpleArray.get(0), is(0));
-        Assert.assertThat(simpleArray.get(2), is(2));
-        Assert.assertThat(simpleArray.get(3), is(3));
-        Assert.assertNull(simpleArray.get(1));
-        Assert.assertNull(simpleArray.get(4));
+    public void whenDeleteIntThenGetOfIndexDeletedNextInt() {
+        this.simpleArray.delete(3);
+        assertThat(this.simpleArray.get(3), is(4));
     }
+
 }

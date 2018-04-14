@@ -27,9 +27,16 @@ public class SimpleArray<T> implements Iterable<T> {
         return (T) this.objects[index];
     }
 
-    public void delete(int index) {
-        this.objects[index] = null;
+    public boolean delete(int position) {
+        boolean result = false;
+        if (position < this.index && position >= 0) {
+            System.arraycopy(objects, position + 1, objects, position, index - position - 1);
+            objects[--index] = null;
+            result = true;
+        }
+        return result;
     }
+
 
     @Override
     public Iterator<T> iterator() {
@@ -50,5 +57,18 @@ public class SimpleArray<T> implements Iterable<T> {
                 return (T) objects[this.iteratorIndex++];
             }
         };
+    }
+
+    public int length() {
+        return index;
+    }
+
+    public boolean update(int index, T valueToUpdate) {
+        boolean result = false;
+        if (index >= 0 && index < this.index && valueToUpdate != null) {
+            objects[index] = valueToUpdate;
+            result = true;
+        }
+        return result;
     }
 }
