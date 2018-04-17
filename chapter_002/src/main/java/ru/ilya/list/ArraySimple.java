@@ -2,6 +2,7 @@ package ru.ilya.list;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -54,8 +55,12 @@ public class ArraySimple<T> implements Iterable<T> {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             private int point = 0;
+            final int modCount = counter;
             @Override
-            public boolean hasNext() {
+            public boolean hasNext() throws ConcurrentModificationException {
+                if (modCount != counter) {
+                    throw new ConcurrentModificationException();
+                }
                 return point < counter;
             }
 

@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.Before;
 
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -49,5 +50,16 @@ public class ArraySimpleTest {
         assertThat(iterator.next(), is(obj3));
         assertThat(iterator.hasNext(), is(false));
         iterator.next();
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenIteratorNextThenCME() {
+        assertThat(iterator.hasNext(), is(true));
+        assertThat(iterator.next(), is(obj1));
+        assertThat(iterator.hasNext(), is(true));
+        assertThat(iterator.hasNext(), is(true));
+        assertThat(iterator.next(), is(obj2));
+        arrayList.add("mod");
+        iterator.hasNext();
     }
 }
