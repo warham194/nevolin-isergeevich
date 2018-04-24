@@ -10,59 +10,62 @@ import java.util.NoSuchElementException;
  */
 public class LinkedSimple<E> implements Iterable<E> {
 
-    private Node<E> first = new Node<E>(0, null, null, null);
-    private Node<E> second = new Node<E>(0, null, null, null);
-    private int size = 0;
-    private int counter = 0;
+    public Node<E> first;
+    public Node<E> second;
+    public int size = 0;
+    public int counter = 0;
 
-    /**
-     * Метод добавления элемента в список.
-     * @param element
-     */
-    public void add(E element) {
-        Node node = new Node(size++, element, second, null);
-        if (first.next == null) {
-            first.next = node;
+
+    public void add(E object) {
+        Node node = new Node(object, null, null);
+        if (isEmpty()) {
+            first = node;
+            second = node;
         } else {
-            second.next = node;
+            node.left = second;
+            second.right = node;
+            second = node;
         }
-        second = node;
         counter++;
+        size++;
     }
 
     public E get(int index) {
-
-            E result = null;
-            Node node = second;
-            for (int i = 0; i < this.size; i++) {
-                if (index == node.index) {
+        E result = null;
+        if (index >= 0 && index < size) {
+            Node node = first;
+            for (int i = 0; i < size; i++) {
+                if (index == i) {
                     result = (E) node.value;
+                    break;
                 } else {
-                    node = node.previous;
+                    node = node.right;
                 }
             }
-            return result;
         }
+        return result;
+    }
 
 
-    private class Node<E> {
-        private E value;
-        public int index;
-        private Node previous;
-        private Node next;
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public class Node<E> {
+        public E value;
+        public Node<E> right;
+        public Node<E> left;
 
         /**
          * Конструктор
-         * @param index
          * @param value
-         * @param next
-         * @param previous
+         * @param right
+         * @param left
          */
-        public Node(int index, E value, Node previous, Node next) {
+        public Node(E value, Node left, Node right) {
             this.value = value;
-            this.next = next;
-            this.previous = previous;
-            this.index = index;
+            this.right = right;
+            this.left = left;
         }
     }
 
@@ -73,7 +76,7 @@ public class LinkedSimple<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
 
-            Node nod = first.next;
+            Node nod = first;
             int expectedModCount = counter;
 
             return new Iterator<E>() {
@@ -84,7 +87,6 @@ public class LinkedSimple<E> implements Iterable<E> {
                     if (expectedModCount != counter) {
                         throw new ConcurrentModificationException();
                     }
-
                     return node != null;
                 }
 
@@ -95,7 +97,7 @@ public class LinkedSimple<E> implements Iterable<E> {
                     }
 
                     E result = (E) node.value;
-                    node = node.next;
+                    node = node.right;
                     return result;
                 }
             };

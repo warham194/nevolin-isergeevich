@@ -1,5 +1,6 @@
 package ru.ilya.list;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import ru.ilya.list.LinkedSimple;
