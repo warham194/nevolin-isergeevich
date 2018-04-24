@@ -1,7 +1,8 @@
-package ru.ilya.iteraror;
+package ru.ilya.list;
 
 import org.junit.Test;
 import org.junit.Before;
+import ru.ilya.list.LinkedSimple;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;

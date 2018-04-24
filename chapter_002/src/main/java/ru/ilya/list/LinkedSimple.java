@@ -1,4 +1,4 @@
-package ru.ilya.iteraror;
+package ru.ilya.list;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
