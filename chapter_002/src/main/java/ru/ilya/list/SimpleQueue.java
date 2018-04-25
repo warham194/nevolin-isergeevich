@@ -6,15 +6,7 @@ package ru.ilya.list;
 public class SimpleQueue<T> extends LinkedSimple<T> {
 
     public T poll() {
-        T result = null;
-        if (first != null) {
-            Node tmp = first;
-            first = tmp.right;
-            tmp.left = null;
-            size--;
-            result = (T) tmp.value;
-        }
-        return result;
+        return removeFirst();
     }
 
 

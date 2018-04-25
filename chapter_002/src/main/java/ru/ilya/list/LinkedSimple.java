@@ -10,10 +10,10 @@ import java.util.NoSuchElementException;
  */
 public class LinkedSimple<E> implements Iterable<E> {
 
-    public Node<E> first;
-    public Node<E> second;
-    public int size = 0;
-    public int counter = 0;
+    private Node<E> first;
+    private Node<E> second;
+    private int size = 0;
+    private int counter = 0;
 
 
     public void add(E object) {
@@ -51,10 +51,36 @@ public class LinkedSimple<E> implements Iterable<E> {
         return size == 0;
     }
 
-    public class Node<E> {
-        public E value;
-        public Node<E> right;
-        public Node<E> left;
+
+    public E removeFirst() {
+        E result = null;
+        if (first != null) {
+            Node tmp = first;
+            first = tmp.right;
+            tmp.left = null;
+            size--;
+            result = (E) tmp.value;
+        }
+        return result;
+    }
+
+    public E removeLast() {
+        E result = null;
+        if (second != null) {
+            LinkedSimple.Node tmp = second;
+            second = tmp.left;
+            tmp.right = null;
+            size--;
+            result = (E) tmp.value;
+        }
+        return result;
+    }
+
+
+    private class Node<E> {
+        private E value;
+        private Node<E> right;
+        private Node<E> left;
 
         /**
          * Конструктор

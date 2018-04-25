@@ -9,15 +9,7 @@ public class SimpleStack<T> extends LinkedSimple<T> {
 
 
     public T poll() {
-        T result = null;
-        if (second != null) {
-            LinkedSimple.Node tmp = second;
-            second = tmp.left;
-            tmp.right = null;
-            size--;
-            result = (T) tmp.value;
-        }
-        return result;
+        return  removeLast();
     }
 
 
