@@ -43,6 +43,10 @@ public class SimpleSet<E> implements Iterable<E> {
         return result;
     }
 
+    public int lenght() {
+        return glass.lenght();
+    }
+
     @Override
     public Iterator<E> iterator() {
         return glass.iterator();

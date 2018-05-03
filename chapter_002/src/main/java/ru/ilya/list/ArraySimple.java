@@ -46,7 +46,9 @@ public class ArraySimple<T> implements Iterable<T> {
         }
     }
 
-
+    public int lenght() {
+        return box.length;
+    }
     /**
      * Iterator
      * @return

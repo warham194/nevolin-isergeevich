@@ -46,10 +46,9 @@ public class SimpleSetTest {
         assertThat(simpleSet.get(0), is("example1"));
         assertThat(simpleSet.get(1), is("example2"));
         assertThat(simpleSet.get(2), is("example3"));
-        assertThat(simpleSet.get(3) == null, is(true));
         simpleSet.add("example1");
         simpleSet.add("example3");
-        assertThat(simpleSet.get(3) == null, is(true));
+        assertThat(simpleSet.lenght(), is(3));
     }
 
 
