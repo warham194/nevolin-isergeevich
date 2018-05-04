@@ -50,7 +50,9 @@ public class LinkedSimple<E> implements Iterable<E> {
     public boolean isEmpty() {
         return size == 0;
     }
-
+    public int lenght() {
+        return size;
+    }
 
     public E removeFirst() {
         E result = null;
