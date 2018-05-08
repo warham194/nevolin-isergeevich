@@ -21,9 +21,7 @@ public class UserMapTest {
     public void whenAddUsersAndNotUseOverriddenEquals() {
         map.put(first, 1);
         map.put(second, 2);
-        System.out.println(map); //при переопределении hashCode программа считает объекты разными
-                                  // т.к. совпадение хеш не значит , что объекты индентичны
-                                 // в данном случае мы получим два объекта с одинаковыми хеш значениями и разными ключами
+        System.out.println(map);
 
     }
 
