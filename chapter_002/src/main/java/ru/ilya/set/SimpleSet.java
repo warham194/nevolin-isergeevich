@@ -21,7 +21,6 @@ public class SimpleSet<E> implements Iterable<E> {
         }
     }
 
-
     public E get(int index) {
         return glass.get(index);
     }
@@ -42,6 +41,8 @@ public class SimpleSet<E> implements Iterable<E> {
         }
         return result;
     }
+
+
 
     public int lenght() {
         return glass.lenght();
