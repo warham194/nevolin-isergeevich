@@ -16,6 +16,7 @@ public class SimpleHashMapTest {
     @Test
     public void setUp() {
         map = new SimpleHashMap(1);
+
         assertThat(map.insert(1, "User1"), is(true));
         assertThat(map.insert(2, "User2"), is(true));
         assertThat(map.insert(3, "User3"), is(true));

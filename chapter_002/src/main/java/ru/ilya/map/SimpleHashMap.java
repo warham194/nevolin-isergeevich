@@ -22,6 +22,7 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
     }
 
     public boolean insert(K key, V value) {
+
         boolean result = false;
         int hash = hash(key.hashCode());
         int i = indexFor(hash, table.length);
