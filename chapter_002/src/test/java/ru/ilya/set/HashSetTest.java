@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 public class HashSetTest {
 
-    private HashSet<String> set;
+    private SimpleHashSet<String> set;
     private String st1 = "string1";
     private String st2 = "string2";
     private String st3 = "string3";
@@ -21,7 +21,7 @@ public class HashSetTest {
 
     @Before
     public void setUp() {
-        set = new HashSet<String>(1);
+        set = new SimpleHashSet<String>(1);
         assertThat(set.add(st1), is(true));
         assertThat(set.add(st2), is(true));
         assertThat(set.add(st3), is(true));
