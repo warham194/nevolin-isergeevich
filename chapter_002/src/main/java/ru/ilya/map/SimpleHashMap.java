@@ -24,15 +24,51 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
     public boolean insert(K key, V value) {
 
         boolean result = false;
-        int hash = hash(key.hashCode());
-        int i = indexFor(hash, table.length);
-        if (table[i] == null) {
-            table[i] = new Entry<>(key, value);
+        int index = hashIndex(key);
+        if (table[index] == null) {
+            if (countItem > table.length * 0.7) {
+                grow();
+            }
+            table[index] = new Entry<>(key, value);
             result = true;
             countItem++;
         }
         return result;
     }
+
+    public V get(K key) {
+        int index = hashIndex(key);
+        return table[index] == null ? null : (V) table[index].value;
+    }
+
+    private void insert(Entry<K, V> e) {
+        insert(e.key, e.value);
+    }
+
+
+    private void grow() {
+        Entry<K, V>[] tab = table;
+        table = new Entry[table.length * 2];
+        countItem = 0;
+        for (Entry<K, V> element : tab) {
+            if (element != null) {
+                insert(element);
+            }
+        }
+    }
+
+    public boolean delete(K key) {
+        boolean result = false;
+        int index = hashIndex(key);
+        if (table[index] != null) {
+            table[index] = null;
+            result = true;
+            countItem--;
+        }
+        return result;
+    }
+
+
 
     public int hash(int h) {
         h ^= (h >>> 20) ^ (h >>> 12);
@@ -40,7 +76,19 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
     }
 
     public int indexFor(int h, int length) {
-        return h & (length-1);
+        return h & (length - 1);
+    }
+
+    private int hashIndex(K key) {
+        return (key == null) ? 0 : key.hashCode() % table.length;
+    }
+
+    public int getcountItem() {
+        return countItem;
+    }
+
+    public int getCapacity() {
+        return table.length;
     }
 
 
@@ -60,6 +108,25 @@ public class SimpleHashMap<K, V> implements Iterable<K> {
 
     @Override
     public Iterator<K> iterator() {
-        return null;
+        return new Iterator<K>() {
+            private int nextIndex = 0, nextCounter = 0;
+            @Override
+            public boolean hasNext() {
+                return nextCounter < countItem;
+            }
+
+
+            @Override
+            public K next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                nextCounter++;
+                while (table[nextIndex] == null) {
+                    nextIndex++;
+                }
+                return (K) table[nextIndex++].key;
+            }
+        };
     }
 }
