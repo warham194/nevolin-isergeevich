@@ -13,6 +13,22 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         this.root = new Node<>(root);
     }
 
+    public boolean isBinary() {
+        boolean result = true;
+        if (root != null) {
+            List<Node<E>> nodes = new ArrayList<>();
+            root.addAllToList(nodes);
+            for (Node<E> e : nodes) {
+                if (e.leaves().size() >= 2) {
+                    result = false;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+
     @Override
     public boolean add(E parent, E child) {
         if (root == null) {
