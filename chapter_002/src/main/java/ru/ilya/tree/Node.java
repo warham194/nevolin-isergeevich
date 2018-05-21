@@ -38,4 +38,16 @@ public class Node<E extends Comparable<E>> {
         }
     }
 
+    public boolean isBinary() {
+        boolean result = true;
+        if (leaves().size() >= 2) {
+            result = false;
+        } else {
+            for (Node node : leaves()) {
+                node.isBinary();
+            }
+        }
+        return result;
+    }
+
 }

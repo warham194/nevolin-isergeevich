@@ -20,6 +20,18 @@ public class SimpleHashMapTest {
         map = new SimpleHashMap<>(32);
     }
 
+    @Test
+    public void setUpTwo() {
+        map = new SimpleHashMap(1);
+        assertThat(map.insert(1, "User1"), is(true));
+        assertThat(map.insert(2, "User2"), is(true));
+        assertThat(map.insert(3, "User3"), is(true));
+        assertThat(map.insert(4, "User4"), is(true));
+        assertThat(map.insert(5, "User5"), is(true));
+        System.out.println(map);
+
+    }
+
 
     @Test
     public void whenInsertTheElementThenMapContainsIt() {
