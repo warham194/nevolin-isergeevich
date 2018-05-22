@@ -1,12 +1,11 @@
 package ru.ilya.tree;
 
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Created by Lenovo2 on 18.05.2018.
  */
-public class BinarySearchTree<E extends Comparable<E>> {
+public class BinarySearchTree<E extends Comparable<E>> implements Iterable<E> {
 
     private BinarySearchTree<E> left;
     private BinarySearchTree<E> right;
@@ -46,8 +45,40 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return result;
     }
 
-
     public boolean contains(E e) {
         return findElement(e).value.equals(e);
+    }
+
+
+    public Iterator<E> iterator() {
+         class BSTIterator implements Iterator<E> {
+             private LinkedList<BinarySearchTree> list = new LinkedList<>();
+             private BSTIterator() {
+                 list.add(BinarySearchTree.this);
+             }
+
+             @Override
+             public boolean hasNext() {
+                 return !list.isEmpty();
+             }
+
+             @Override
+             public E next() {
+                 if (!hasNext()) {
+                     throw new NoSuchElementException();
+                 }
+                 BinarySearchTree<E> result = list.removeFirst();
+                 if (result.left != null) {
+                     list.add(result.left);
+                 }
+                 if (result.right != null) {
+                     list.add(result.right);
+                 }
+                 return result.value;
+             }
+         }
+
+
+        return new BSTIterator();
     }
 }
