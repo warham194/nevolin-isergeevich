@@ -23,6 +23,16 @@ public class SegmentsTest {
         Point a1 = new Point(10);
         Point b1 = new Point(15);
         assertThat(test.intersectionCheck(a1, b1, c, d), is(false));
+        Point a2 = new Point(0);
+        Point b2 = new Point(5);
+        Point c2 = new Point(1);
+        Point d2 = new Point(4);
+        assertThat(test.intersectionCheck(a2, b2, c2, d2), is(true));
+        Point a3 = new Point(0);
+        Point b3 = new Point(5);
+        Point c3 = new Point(-5);
+        Point d3 = new Point(-1);
+        assertThat(test.intersectionCheck(a3, b3, c3, d3), is(false));
     }
 
 }
