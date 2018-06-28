@@ -1,14 +1,13 @@
 package ru.ilya.kontrol;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Lenovo2 on 01.06.2018.
  */
 public class Glass {
 
-    private List<Issuer> glasses = new ArrayList<>();
+    private HashSet<Issuer> glasses = new HashSet<>();
 
     public void addOrder(Application order) {
         boolean result = false;
@@ -58,7 +57,7 @@ public class Glass {
     /**
      * For tests.
      */
-    public List<Issuer> getGlasses() {
+    public HashSet<Issuer> getGlasses() {
         return this.glasses;
     }
 }
