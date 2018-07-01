@@ -32,7 +32,7 @@ public class Simile {
             anagram.put(c, count);
         }
         for (Character c : chArrayTwo) {
-            int count = - 1;
+            int count = -1;
             if (anagram.containsKey(c)) {
                 count = anagram.get(c) - 1;
             }
