@@ -17,7 +17,8 @@ public class RectangleMove implements Runnable {
     @Override
     public void run() {
         int x = 1;
-        while (true) {
+        Thread current = Thread.currentThread();
+        while (!current.interrupted()) {
             if (this.rect.getX() <= 0 || this.rect.getX() >= maxX) {
                 x *= -1;
             }
